@@ -1,0 +1,24 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#app-name {
+    text-align: center;
+}
+
+#tag-line {
+    margin-bottom: 10px;
+}
+
+.container {
+    text-align: center;
+}
+
+.item_container {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.item {
+    list-style: none;
+}

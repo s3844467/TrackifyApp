@@ -1,17 +1,124 @@
-* {
-    font-family: Arial, Helvetica, sans-serif;
+@font-face {
+    font-family: 'Akira';
+    src: url(fonts/Akira\ Expanded\ Demo.otf)
+}
+
+@font-face {
+    font-family: 'Big Noodle';
+    src: url(fonts/big_noodle_titling.ttf)
+}
+
+@font-face {
+    font-family: 'Qualy';
+    src: url(fonts/Qualy\ Bold.ttf)
+}
+
+@font-face {
+    font-family: 'Fresh Lychee';
+    src: url(fonts/Fresh\ Lychee.ttf)
+}
+
+@font-face {
+    font-family: 'Frock';
+    src: url(fonts/Frock-BlackItalic.otf)
+}
+
+@font-face {
+    font-family: 'Days';
+    src: url(fonts/Days.ttf)
+}
+
+@font-face {
+    font-family: 'Coolvetica';
+    src: url(fonts/coolvetica\ rg.otf)
+}
+
+@font-face {
+    font-family: 'Mont';
+    src: url(fonts/Mont-HeavyDEMO.otf)
+}
+
+@font-face {
+    font-family: 'Biko';
+    src: url(fonts/Biko_Regular.otf);
+}
+
+@font-face {
+    font-family: 'Proxima';
+    src: url(fonts/Rene\ Bieder\ \ Milliard\ Bold.otf);
+}
+
+body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url(Fonts/andrea-ferrario-3WgPZbsDSkE-unsplash.jpg);
+  background-size: cover;
+  background-position: center;
 }
 
 #app-name {
     text-align: center;
+    font-family: 'Frock';
+    font-size: 12px;
+    margin: 0;
+    margin-bottom: 20px ;
+    color: white;
+    letter-spacing: 3px;
+    text-transform: uppercase;
 }
 
 #tag-line {
     margin-bottom: 10px;
+    font-family: 'Mont';
+    margin-top: 0px;
+    padding-top: 30px;
+    font-size: 36px;
+    color: white;
 }
 
 .container {
     text-align: center;
+    /* border: 2px solid black; */
+    width: 800px;
+    height: 800px;
+    margin: 0 auto;
+    border: 1px solid 0.5;
+    border-radius: 2%;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#user-input {
+    width: 40%;
+    border: 2px solid #fff;
+    outline: #838383;
+    border-radius: 6px;
+    padding-top: 5px;
+    padding-bottom: 5.5px;
+    transition: 0.3s;
+    font-family: 'Proxima';
+    background-color: rgba(255, 255, 255, 1);
+}
+
+#user-input::placeholder {
+    color: rgb(200, 200, 200);
+}
+
+#user-input:focus {
+    color: #e5383b;
+
+}
+
+#submit {
+  background: linear-gradient(#e5383b,#d95550);
+  color: #ffffff;
+  border: 2px solid;
+  border-radius: 6px;
+  width: 11%;
+  padding-top: 6.5px;
+  padding-bottom: 5px;
+  transition: 0.3s;
+  font-family: 'Mont';
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .item_container {
@@ -21,4 +128,8 @@
 
 .item {
     list-style: none;
+}
+
+.completed {
+    text-decoration: line-through;
 }

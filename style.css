@@ -48,6 +48,11 @@
     src: url(fonts/Rene\ Bieder\ \ Milliard\ Bold.otf);
 }
 
+@font-face {
+    font-family: 'Renogare';
+    src: url(fonts/Renogare-Regular.otf);
+}
+
 body {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url(Fonts/andrea-ferrario-3WgPZbsDSkE-unsplash.jpg);
@@ -94,7 +99,7 @@ body {
     padding-top: 5px;
     padding-bottom: 5.5px;
     transition: 0.3s;
-    font-family: 'Proxima';
+    font-family: 'Renogare';
     background-color: rgba(255, 255, 255, 1);
 }
 
@@ -103,8 +108,8 @@ body {
 }
 
 #user-input:focus {
-    color: #e5383b;
-
+    color: #495057;
+    font-family: 'Renogare';
 }
 
 #submit {
@@ -124,12 +129,19 @@ body {
 .item_container {
     text-align: center;
     margin-top: 40px;
+    border: 2px solid white;
+    width: 40%;
+    margin: 2px auto;
 }
 
 .item {
     list-style: none;
+    color: red;
 }
 
+/*
+Toggles task being completed
+*/
 .completed {
     text-decoration: line-through;
 }

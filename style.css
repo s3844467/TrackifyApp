@@ -129,14 +129,16 @@ body {
 .item_container {
     text-align: center;
     margin-top: 40px;
-    border: 2px solid white;
-    width: 40%;
-    margin: 2px auto;
+    width: 60%;
+    margin: auto;
+    margin-top: 20px;
 }
 
 .item {
     list-style: none;
-    color: red;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid red;
 }
 
 /*

@@ -39,7 +39,7 @@ function createToDo() {
 
     // remove item from list
     removeButton.addEventListener('click', () => {
-        newItem.innerText = '';
+        todoList.removeChild(todoDiv);
     })
 }
 

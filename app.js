@@ -1,7 +1,7 @@
 // selectors
 const userInput = document.querySelector("#user-input");
 const submitButton = document.querySelector('#submit');
-const todoList = document.querySelector('.item_container');
+const todoList = document.querySelector('.todo-list');
 
 // event listeners
 submitButton.addEventListener('click', createToDo);
@@ -11,12 +11,12 @@ submitButton.addEventListener('click', clearInput);
 function createToDo() {
     // creates new div
     const todoDiv = document.createElement("div"); 
-    todoDiv.classList.add('todo'); 
+    todoDiv.classList.add('todo-container'); 
 
     // create item list
     const newItem = document.createElement("li");
     newItem.innerText = userInput.value; // todo-item becomes the value user enters
-    newItem.classList.add('item'); 
+    newItem.classList.add('todo-item'); 
     todoDiv.appendChild(newItem); 
 
     // create completed button

@@ -126,19 +126,34 @@ body {
   letter-spacing: 1px;
 }
 
-.item_container {
-    text-align: center;
-    margin-top: 40px;
-    width: 60%;
-    margin: auto;
-    margin-top: 20px;
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
 
-.item {
+.todo-list {
     list-style: none;
+    min-width: 60%;
+    padding: 0;
+}
+
+.todo-item {
+    margin: 0.5rem;
+    margin-left: 0;
+    padding: 0.5rem;
+    background-color: white;
+    color: black;
+    font-size: 20px;
     display: flex;
     justify-content: space-between;
-    border: 1px solid red;
+    align-content: center;
+}
+
+/* Puts button on the right side
+*/
+.completedbtn {
+    margin-left: auto;
 }
 
 /*

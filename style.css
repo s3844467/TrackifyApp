@@ -40,7 +40,7 @@
 
 @font-face {
     font-family: 'Biko';
-    src: url(fonts/Biko_Regular.otf);
+    src: url(fonts/Biko_Bold.otf);
 }
 
 @font-face {
@@ -51,6 +51,16 @@
 @font-face {
     font-family: 'Renogare';
     src: url(fonts/Renogare-Regular.otf);
+}
+
+@font-face {
+    font-family: 'Vice City';
+    src: url(fonts/ViceCitySans.otf);
+}
+
+@font-face {
+    font-family: 'Tabarra';
+    src: url(fonts/TabarraPro-Black-FFP.ttf);
 }
 
 body {
@@ -134,7 +144,7 @@ body {
 
 .todo-list {
     list-style: none;
-    min-width: 60%;
+    min-width: 80%;
     padding: 0;
 }
 
@@ -142,12 +152,17 @@ body {
     margin: 0.5rem;
     margin-left: 0;
     padding: 0.5rem;
-    background-color: white;
-    color: black;
-    font-size: 20px;
+    background:#7f7888;
+    color: rgb(255, 255, 255); 
+    font-size: 17px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; 
     align-content: center;
+    border-radius: 5px;
+    border: 2px solid rgb(255, 255, 255);
+    font-family: 'Renogare';
+    word-wrap: break-all;
+    overflow: auto;
 }
 
 /* Puts button on the right side
@@ -156,9 +171,29 @@ body {
     margin-left: auto;
 }
 
+.completedbtn, .removebtn {
+    background: transparent;
+    color: white;
+    border: none;
+    font-size: medium;
+}
+
+.completedbtn:hover {
+    color: #06d6a0;
+    cursor: pointer;
+}
+
+.removebtn:hover {
+    color: #e5383b;
+    cursor: pointer;
+}
+
 /*
 Toggles task being completed
 */
 .completed {
     text-decoration: line-through;
+    text-decoration-thickness: 2px;
+    text-decoration-color: #e5383b;
+    text-decoration-style: solid;
 }

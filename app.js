@@ -9,39 +9,57 @@ submitButton.addEventListener('click', clearInput);
 
 // create a todo
 function createToDo() {
-    // creates new div
-    const todoDiv = document.createElement("div"); 
-    todoDiv.classList.add('todo-container'); 
 
-    // create item list
-    const newItem = document.createElement("li");
-    newItem.innerText = userInput.value; // todo-item becomes the value user enters
-    newItem.classList.add('todo-item'); 
-    todoDiv.appendChild(newItem); 
+    if (userInput.value !== '') {
+        // creates new div
+        const todoDiv = document.createElement("div"); 
+        todoDiv.classList.add('todo-container'); 
 
-    // create completed button
-    const completedButton = document.createElement('button');
-    completedButton.innerText = 'completed';
-    completedButton.classList.add('completedbtn');
-    newItem.appendChild(completedButton);
+        // create item list
+        const newItem = document.createElement("li");
+        newItem.innerText = userInput.value; // todo-item becomes the value user enters
+        newItem.classList.add('todo-item'); 
+        todoDiv.appendChild(newItem); 
 
-    // create remove button
-    const removeButton = document.createElement('button'); 
-    removeButton.innerText = 'remove'; 
-    removeButton.classList.add('removebtn'); 
-    newItem.appendChild(removeButton);
-    todoList.appendChild(todoDiv); // adds tododiv to main container
+        // create completed button
+        const completedButton = document.createElement('button');
+        completedButton.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+        completedButton.classList.add('completedbtn');
+        newItem.appendChild(completedButton);
 
-    // dash line through item when completed
-    completedButton.addEventListener('click', () => {
-        newItem.classList.toggle('completed');
-    })
+        // create remove button
+        const removeButton = document.createElement('button'); 
+        removeButton.innerHTML= '<i class="fa-solid fa-trash"></i>'; 
+        removeButton.classList.add('removebtn'); 
+        newItem.appendChild(removeButton);
+        todoList.appendChild(todoDiv); // adds tododiv to main container
 
-    // remove item from list
-    removeButton.addEventListener('click', () => {
-        todoList.removeChild(todoDiv);
-    })
+        // dash line through item when completed
+        completedButton.addEventListener('click', () => {
+            newItem.classList.toggle('completed');
+        })
+
+        // remove item from list
+        removeButton.addEventListener('click', () => {
+            todoList.removeChild(todoDiv);
+        })
+    } else {
+        alert("You did not enter anything");
+    }
+   
 }
+
+// add todo by hitting enter key
+function submitTaskWithEnter() {
+    userInput.addEventListener("keyup", (e) => {
+        if (e.keyCode === 13) {
+            e.preventDefault();
+            submitButton.click();
+        }
+    }) 
+}
+submitTaskWithEnter();
+
 
 // clear text input
 function clearInput() {

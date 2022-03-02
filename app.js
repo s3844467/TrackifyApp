@@ -5,7 +5,7 @@ const todoList = document.querySelector('.todo-list');
 
 // event listeners
 submitButton.addEventListener('click', createToDo);
-submitButton.addEventListener('click', clearInput);
+document.addEventListener('DOMContentLoaded', getTodos);
 addTaskWithEnter();
 
 // create a todo
@@ -15,6 +15,7 @@ function createToDo() {
         const todoDiv = document.createElement("div"); 
         todoDiv.classList.add('todo-container'); 
 
+        saveLocalTodos(userInput.value);
         // create item list
         const newItem = document.createElement("li");
         newItem.innerText = userInput.value; // todo-item becomes the value user enters
@@ -66,7 +67,7 @@ function createToDo() {
                 newItem.title = 'Task pending';
             }
         })
-
+        clearInput(); // clears text field
     } else {
         alert("You forgot to enter something!");
     }
@@ -98,3 +99,30 @@ function toggleTaskStatus(el, className) {
     }
 }
 
+// save todos to local storage
+function saveLocalTodos(todo) {
+    let todoList = JSON.parse(localStorage.getItem('todoList'));
+    if (todoList === null) {
+        tasks = [];
+    } else {
+        tasks = todoList;
+    }
+    tasks.push(todo);
+    localStorage.setItem('todoList', JSON.stringify(tasks));
+}
+
+
+/*
+* WORKING ON THIS
+*/
+function getTodos() {
+    let todoList = JSON.parse(localStorage.getItem('todoList'));
+    if (todoList === null) {
+        tasks = [];
+    } else {
+        tasks = todoList;
+    }
+    tasks.forEach((data, index) => {
+
+    })
+}

@@ -6,10 +6,10 @@ const todoList = document.querySelector('.todo-list');
 // event listeners
 submitButton.addEventListener('click', createToDo);
 submitButton.addEventListener('click', clearInput);
+addTaskWithEnter();
 
 // create a todo
 function createToDo() {
-
     if (userInput.value !== '') {
         // creates new div
         const todoDiv = document.createElement("div"); 
@@ -21,49 +21,80 @@ function createToDo() {
         newItem.classList.add('todo-item'); 
         todoDiv.appendChild(newItem); 
 
+        const editButton = document.createElement('button');
+        editButton.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
+        editButton.classList.add('editbtn');
+        editButton.title = 'Edit field';
+        newItem.appendChild(editButton);
+
         // create completed button
         const completedButton = document.createElement('button');
         completedButton.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
         completedButton.classList.add('completedbtn');
+        completedButton.title = 'Mark task as "completed"';
         newItem.appendChild(completedButton);
 
         // create remove button
         const removeButton = document.createElement('button'); 
         removeButton.innerHTML= '<i class="fa-solid fa-trash"></i>'; 
         removeButton.classList.add('removebtn'); 
+        removeButton.title = 'Remove task';
         newItem.appendChild(removeButton);
         todoList.appendChild(todoDiv); // adds tododiv to main container
+
+        // edit text field 
+        editButton.addEventListener('click', () => {
+            console.log("testing edit button");
+        })
 
         // dash line through item when completed
         completedButton.addEventListener('click', () => {
             newItem.classList.toggle('completed');
+            toggleTaskStatus(newItem, 'completed');
         })
 
         // remove item from list
         removeButton.addEventListener('click', () => {
             todoList.removeChild(todoDiv);
         })
+
+        // task status on hover
+        newItem.addEventListener('mouseover', () => {
+            if (newItem.classList.contains('completed')) {
+                newItem.title = 'Task completed';
+            } else {
+                newItem.title = 'Task pending';
+            }
+        })
+
     } else {
-        alert("You did not enter anything");
+        alert("You forgot to enter something!");
     }
    
 }
 
-// add todo by hitting enter key
-function submitTaskWithEnter() {
+// add todo by hitting enter keys
+function addTaskWithEnter() {
+    const enterKey = 13;
     userInput.addEventListener("keyup", (e) => {
-        if (e.keyCode === 13) {
+        if (e.keyCode === enterKey) {
             e.preventDefault();
             submitButton.click();
         }
     }) 
 }
-submitTaskWithEnter();
-
 
 // clear text input
 function clearInput() {
     userInput.value = '';
 } 
 
+// change the colour of the task status with border
+function toggleTaskStatus(el, className) {
+    if (el.classList.contains(className)) {
+        el.style.borderLeftColor = '#06d6a0';
+    } else {
+        el.style.borderLeftColor = '#ff9d00';
+    }
+}
 

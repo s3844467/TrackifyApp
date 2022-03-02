@@ -152,14 +152,14 @@ body {
     margin: 0.5rem;
     margin-left: 0;
     padding: 0.5rem;
-    background:#7f7888;
+    background:#887879;
     color: rgb(255, 255, 255); 
     font-size: 17px;
     display: flex;
     justify-content: space-between; 
     align-content: center;
-    border-radius: 5px;
-    border: 2px solid rgb(255, 255, 255);
+    border-radius: 4px;
+    border-left: 6px solid #ff9d00;
     font-family: 'Renogare';
     word-wrap: break-all;
     overflow: auto;
@@ -171,11 +171,25 @@ body {
     margin-left: auto;
 }
 
+.editbtn {
+    margin-right: auto;
+    font-size: small;
+    background: transparent;
+    color: white;
+    border: none;
+    font-size: small;
+}
+
 .completedbtn, .removebtn {
     background: transparent;
     color: white;
     border: none;
     font-size: medium;
+}
+
+.editbtn:hover {
+    color: #fcbf49;
+    cursor: pointer;
 }
 
 .completedbtn:hover {

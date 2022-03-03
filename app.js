@@ -5,8 +5,7 @@ const todoList = document.querySelector('.todo-list');
 
 // event listeners
 submitButton.addEventListener('click', createToDo);
-document.addEventListener('DOMContentLoaded', getTodos);
-addTaskWithEnter();
+window.addEventListener('DOMContentLoaded', showSavedTodos);
 
 // create a todo
 function createToDo() {
@@ -84,6 +83,7 @@ function addTaskWithEnter() {
         }
     }) 
 }
+addTaskWithEnter();
 
 // clear text input
 function clearInput() {
@@ -101,28 +101,81 @@ function toggleTaskStatus(el, className) {
 
 // save todos to local storage
 function saveLocalTodos(todo) {
-    let todoList = JSON.parse(localStorage.getItem('todoList'));
-    if (todoList === null) {
+    let list = JSON.parse(localStorage.getItem('list'));
+    if (list === null) {
         tasks = [];
     } else {
-        tasks = todoList;
+        tasks = list;
     }
     tasks.push(todo);
-    localStorage.setItem('todoList', JSON.stringify(tasks));
+    localStorage.setItem('list', JSON.stringify(tasks));
 }
 
-
-/*
-* WORKING ON THIS
-*/
-function getTodos() {
-    let todoList = JSON.parse(localStorage.getItem('todoList'));
-    if (todoList === null) {
+// display todos saved in local storage
+function showSavedTodos() {
+    console.log("hello");
+    let tasks;
+    let list = JSON.parse(localStorage.getItem('list'));
+    if (list === null) {
         tasks = [];
     } else {
-        tasks = todoList;
+        tasks = list;
     }
-    tasks.forEach((data, index) => {
+    tasks.forEach(function(todo) {
+        // creates new div
+        const todoDiv = document.createElement("div"); 
+        todoDiv.classList.add('todo-container'); 
 
+        // create item list
+        const newItem = document.createElement("li");
+        newItem.innerText = todo; // todo-item becomes the value user enters
+        newItem.classList.add('todo-item'); 
+        todoDiv.appendChild(newItem); 
+
+        const editButton = document.createElement('button');
+        editButton.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
+        editButton.classList.add('editbtn');
+        editButton.title = 'Edit field';
+        newItem.appendChild(editButton);
+
+        // create completed button
+        const completedButton = document.createElement('button');
+        completedButton.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+        completedButton.classList.add('completedbtn');
+        completedButton.title = 'Mark task as "completed"';
+        newItem.appendChild(completedButton);
+
+        // create remove button
+        const removeButton = document.createElement('button'); 
+        removeButton.innerHTML= '<i class="fa-solid fa-trash"></i>'; 
+        removeButton.classList.add('removebtn'); 
+        removeButton.title = 'Remove task';
+        newItem.appendChild(removeButton);
+        todoList.appendChild(todoDiv); // adds tododiv to main container
+
+        // edit text field 
+        editButton.addEventListener('click', () => {
+            console.log("testing edit button");
+        })
+
+        // dash line through item when completed
+        completedButton.addEventListener('click', () => {
+            newItem.classList.toggle('completed');
+            toggleTaskStatus(newItem, 'completed');
+        })
+
+        // remove item from list
+        removeButton.addEventListener('click', () => {
+            todoList.removeChild(todoDiv);
+        })
+
+        // task status on hover
+        newItem.addEventListener('mouseover', () => {
+            if (newItem.classList.contains('completed')) {
+                newItem.title = 'Task completed';
+            } else {
+                newItem.title = 'Task pending';
+            }
+        })
     })
 }
